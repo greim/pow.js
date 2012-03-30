@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>pow.js - Algorithmic sunburst generator via CSS, canvas and jQuery.</title>
+<link href='http://fonts.googleapis.com/css?family=Port+Lligat+Slab' rel='stylesheet' type='text/css'>
+<style type="text/css">
+body{
+	font-family:sans-serif;
+	margin:0;
+	padding:0;
+	font-size:15px;
+	line-height:1.6;
+	background:hsl(100,40%,50%);
+	color:#fff;
+}
+a[href]{
+	color:#fff;
+	text-decoration:none;
+	border-bottom:1px dotted;
+}
+#w1{
+	max-width:700px;
+	margin:auto;
+	padding:10px 30px 30px;
+	background-color:hsl(100,40%,40%);
+	border:10px solid hsl(100,100%,90%);
+	box-shadow:0 0 10px rgba(0,0,0,0.2);
+	border-width:0 10px;
+	position: relative;
+}
+#x{
+	position: fixed;
+	bottom:0;
+	right:0;
+	left:0;
+	top:0;
+}
+h1{
+	font-size:40px;
+	line-height:1.1;
+	text-shadow:1px 2px 0 rgba(0,0,0,0.25);
+}
+h1,h2,h3,h4,h5,h6{
+	font-family:'Port Lligat Slab';
+	font-weight:normal;
+}
+h1,h2,h3,h4,h5,h6,p{
+	margin:20px 0;
+}
+p#exp{
+	width:90%;
+	margin:30px auto;
+}
+#example{
+	height:300px;
+	background:hsl(210, 100%, 70%);
+	color:rgba(0,0,0,0.3);
+	border-radius:6px;
+	padding:10px 25px;
+	margin:20px 0;
+	text-shadow:none;
+	box-shadow:0 0 0 2px #fff inset, 1px 1px 5px 2px rgba(0,0,0,0.3) inset;
+	position: relative;
+}
+span#sun{
+	position:absolute;
+	top:100px;
+	left:200px;
+	line-height:70px;
+	width:70px;
+	text-align:center;
+	background:#fff;
+	color:hsla(210, 60%, 70%,0.2);
+	border-radius:100px;
+	box-shadow:0 0 2px 1px #fff,0 0 4px 1px #fff,0 0 8px 1px #fff;
+}
+button{
+	border:none;
+	background-color:rgba(0,0,0,0.5);
+	color:#fff;
+	font-family:'Port Lligat Slab';
+	font-size:22px;
+	line-height:50px;
+	padding:0 30px;
+	border-radius:6px;
+	cursor: pointer;
+	box-shadow:1px 1px 5px rgba(0,0,0,0.5);
+}
+button:hover{
+	box-shadow:0 0 10px 2px #fff;
+}
+span.sep{
+	margin:0 10px;
+}
+</style>
+</head>
+<body>
+<div id="w1">
+
+<div id="example">
+	<span id="sun">&#160;</span>
+</div>
+
+<h1>pow.js — Algorithmic sunburst generator via CSS, canvas and jQuery.</h1>
+
+<form>
+<p id="exp">
+<em>March 28, 2012</em> — This jQuery plugin paints a burst pattern onto your element of choice, and is freely available under the MIT license.
+Pow.js generates the pattern in canvas, and simply layers in the resulting image data as a CSS background. It's kinda actually not that complicated.
+</p>
+<pre>
+/* Try it out. */
+$('div#example').pow({
+  <label>rays:          <input type="text" name="rays" value="32"></label>, // positive integer > 1
+  <label>bgColorStart:  <input type="text" name="bgColorStart" value="hsl(210, 100%, 90%)"></label>, // any css color
+  <label>rayColorStart: <input type="text" name="rayColorStart" value="hsl(210, 100%, 97%)"></label>, // any css color
+  <label>bgColorEnd:    <input type="text" name="bgColorEnd" value="hsl(210, 100%, 60%)"></label>, // any css color
+  <label>rayColorEnd:   <input type="text" name="rayColorEnd" value="hsl(210, 100%, 80%)"></label>, // any css color
+  <label>originX:       <input type="text" name="originX" value="60%"></label>, // percentage, e.g. '33%'
+  <label>originY:       <input type="text" name="originY" value="40%"></label>, // percentage, e.g. '120%'
+  <label>originEl:      <input type="text" name="originEl" value="#sun"></label>  // any jQuery selector
+});
+</pre>
+<button type="submit">Pow!</button></p>
+</form>
+
+<footer>
+<p>
+	Copyright 2012 by <a href="http://obadger.com/">Greg Reimer</a>
+	<span class="sep">|</span>
+	<a href="http://obadger.com/">MIT Licensed</a>
+	<span class="sep">|</span>
+	<a href="http://obadger.com/">GitHub</a>
+</p>
+</footer>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="pow.js"></script>
+<script>
+$('body').pow({
+	rays: 100,
+	originY:'33%',
+	//originEl:'span#pow',
+	bgColorStart: 'hsl(100,70%,90%)',
+	rayColorStart: 'hsl(100,70%,90%)',
+	bgColorEnd: 'hsl(100,80%,27%)',
+	rayColorEnd: 'hsl(100,70%,30%)',
+	sizingRatio: 4
+});
+$('form').submit(function(ev){
+	ev.preventDefault();
+	$('#example').pow({
+		originX:$('[name=originX]').val() || undefined,
+		originY:$('[name=originY]').val() || undefined,
+		rays:$('[name=rays]').val() || undefined,
+		bgColorStart:$('[name=bgColorStart]').val() || undefined,
+		bgColorEnd:$('[name=bgColorEnd]').val() || undefined,
+		rayColorStart:$('[name=rayColorStart]').val() || undefined,
+		rayColorEnd:$('[name=rayColorEnd]').val() || undefined,
+		originEl:$('[name=originEl]').val() || undefined
+	});
+});
+//$('form').submit();
+</script>
+
+</div>
+</body>
+</html>
