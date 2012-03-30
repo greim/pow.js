@@ -64,17 +64,10 @@ p#exp{
 	box-shadow:0 0 0 2px #fff inset, 1px 1px 5px 2px rgba(0,0,0,0.3) inset;
 	position: relative;
 }
-span#sun{
+span#foo{
 	position:absolute;
-	top:100px;
+	top:106px;
 	left:200px;
-	line-height:70px;
-	width:70px;
-	text-align:center;
-	background:#fff;
-	color:hsla(210, 60%, 70%,0.2);
-	border-radius:100px;
-	box-shadow:0 0 2px 1px #fff,0 0 4px 1px #fff,0 0 8px 1px #fff;
 }
 button{
 	border:none;
@@ -101,7 +94,7 @@ span.sep{
 <div id="w1">
 
 <div id="example">
-	<span id="sun">&#160;</span>
+	<span id="foo">#foo</span>
 </div>
 
 <h1>pow.js — Algorithmic sunburst generator via CSS, canvas and jQuery.</h1>
@@ -121,7 +114,7 @@ $('div#example').pow({
   <label>rayColorEnd:   <input type="text" name="rayColorEnd" value="hsl(210, 100%, 80%)"></label>, // any css color
   <label>originX:       <input type="text" name="originX" value="60%"></label>, // percentage, e.g. '33%'
   <label>originY:       <input type="text" name="originY" value="40%"></label>, // percentage, e.g. '120%'
-  <label>originEl:      <input type="text" name="originEl" value="#sun"></label>  // any jQuery selector
+  <label>originEl:      <input type="text" name="originEl" value="#foo"></label>  // any jQuery selector
 });
 </pre>
 <p>
