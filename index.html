@@ -88,9 +88,26 @@ button:hover{
 span.sep{
 	margin:0 10px;
 }
+div#fill{
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background:hsl(100,40%,50%);
+	opacity:1;
+	-webkit-transition:opacity 5s linear;
+	-moz-transition:opacity 5s linear;
+	-o-transition:opacity 5s linear;
+	transition:opacity 5s linear;
+}
+div#fill.off{
+	opacity:0;
+}
 </style>
 </head>
 <body>
+<div id="fill"></div>
 <div id="w1">
 
 <div id="example">
@@ -130,16 +147,19 @@ $('div#example').pow({
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="pow.js"></script>
 <script>
-$('body').pow({
-	rays: 100,
-	originY:'33%',
-	//originEl:'span#pow',
-	bgColorStart: 'hsl(100,70%,90%)',
-	rayColorStart: 'hsl(100,70%,90%)',
-	bgColorEnd: 'hsl(100,80%,27%)',
-	rayColorEnd: 'hsl(100,70%,30%)',
-	sizingRatio: 4
-});
+setTimeout(function(){
+	$('body').pow({
+		rays: 100,
+		originY:'33%',
+		//originEl:'span#pow',
+		bgColorStart: 'hsl(100,70%,90%)',
+		rayColorStart: 'hsl(100,70%,90%)',
+		bgColorEnd: 'hsl(100,80%,26%)',
+		rayColorEnd: 'hsl(100,70%,30%)',
+		sizingRatio: 4
+	});
+	$('div#fill').addClass('off');
+},1000);
 $('form').submit(function(ev){
 	ev.preventDefault();
 	$('#example').pow({
