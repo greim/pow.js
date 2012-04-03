@@ -43,7 +43,7 @@ DEALINGS IN THE SOFTWARE.
       args = $.extend({}, defaultArgs, args);
 
       // set vars and grab a few values to use later
-      var $el = this;  
+      var $el = this.eq(0);
       var width = $el.outerWidth();
       var height = $el.outerHeight();
       var offset = $el.offset();
