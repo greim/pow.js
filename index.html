@@ -23,7 +23,7 @@ a[href]{
 #w1{
 	max-width:700px;
 	margin:auto;
-	padding:10px 30px 300px;
+	padding:10px 30px 400px;
 	background-color:hsl(100,40%,40%);
 	border:10px solid hsl(100,100%,90%);
 	box-shadow:0 0 10px rgba(0,0,0,0.2);
@@ -118,7 +118,7 @@ div#fill.off{
 
 <form>
 <p id="exp">
-<em>March 28, 2012</em> — This jQuery plugin paints a burst pattern onto your element of choice, and is freely available under the MIT license.
+This jQuery plugin paints a burst pattern onto your element of choice, and is freely available under the MIT license.
 Pow.js generates the pattern in canvas, and simply layers in the resulting image data as a CSS background. It's kinda actually not that complicated.
 </p>
 <pre>
@@ -132,6 +132,7 @@ $('div#example').pow({
   <label>originX:       <input type="text" name="originX" value="60%"></label>, // percentage, e.g. '33%'
   <label>originY:       <input type="text" name="originY" value="40%"></label>, // percentage, e.g. '120%'
   <label>originEl:      <input type="text" name="originEl" value="#foo"></label>  // any jQuery selector
+  // note: 'originEl' overrides 'originX' and 'originY'
 });
 </pre>
 <p>
@@ -151,7 +152,7 @@ setTimeout(function(){
 	$('body').pow({
 		rays: 100,
 		originY:'33%',
-		//originEl:'span#pow',
+		originEl:'#foo',
 		bgColorStart: 'hsl(100,70%,90%)',
 		rayColorStart: 'hsl(100,70%,90%)',
 		bgColorEnd: 'hsl(100,80%,26%)',
